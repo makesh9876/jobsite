@@ -1,31 +1,16 @@
 body{
 	background-color: silver;
 }
-.card{
-	width: 50%;
-}
+
 @media only screen and (min-width: 1280px){
-	.card{
-		width: 25%;
-	}
-	.detailimage{
-		display: block;
-		margin-right: auto;
-		margin-left: auto;
-		width: 50%;
-	}
+
 	.contentt{
 		width: 60%;
 		display: block;
 		margin-right: auto;
 		margin-left: auto;
-	}
-	.about{
-		width: 60%;
-		display: block;
-		margin-right: auto;
-		margin-left: auto;
-	}
+
+}
 }
 
 
@@ -35,22 +20,13 @@ body{
 	font-family: Roboto, Arial, sans-serif;
 }
 
-.bc h2, h5{
+.bc h1{
+	text-align: center;
+
 }
 
 .page-footer{
 	background-color: grey;
-}
-.sr{
-	background-color: red;
-	margin-top: 0;
-	display: block;
-	margin-right: auto;
-	margin-left: auto;
-}
-.img{
-	width: 100%;
-	height: 250px;
 }
 .page h1.format-icon:before {
 	content: none;
@@ -64,11 +40,9 @@ h2{
 
 }
 .related_post{
-	text-align: center;
+	text-align: left;
 }
-.relposttitle{
-	font-size: 20px;
-}
+
 .dis{
 	pointer-events: none;
 	cursor: default;
@@ -83,3 +57,4 @@ h2{
 .term{
 	pointer-events: none;
 	cursor: default;
+

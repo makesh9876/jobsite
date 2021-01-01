@@ -1,47 +1,118 @@
-<title>Tamil story</title>
+<title>job details</title>
 {% extends 'index.html' %}
 
 {% load static %}
 {% block content %}
+<br>
+
+<a href="{% url 'home' %}" class="btn btn-danger">Back To Home</a>
 
 <div class="bc">
 
-	<h1 style="color: black;text-align: center;"><strong>{{blog.title}}</strong></h1>
-	<br>
-	<h4 style="color: grey;text-align: center;">{{blog.description}}</h4>
-	{% if blog.image %}
-	<img src="{{blog.image.url}}" class="card-img-top detailimage" alt="...">
-	{% endif %}
-	<br>
-	<br>
-	<div class="contentt"><h2 style="color: brown;text-align: center;">{{blog.stitle}}</h2>
-	<h6>{{blog.content|safe|linebreaks}}</h6>
-	<h2>{{blog.stitle1}}</h2>
-	<h6>{{blog.content1|safe|linebreaks}}</h6>
-	<h2>{{blog.stitle2}}</h2>
-	<h6>{{blog.content2|safe|linebreaks}}</h6>
-	<h2>{{blog.stitle3}}</h2>
-	<h6>{{blog.content3|safe|linebreaks}}</h6>
-	<h2>{{blog.stitle4}}</h2>
-	<h6>{{blog.content4|safe|linebreaks}}</h6>
-	<h2>{{blog.stitle5}}</h2>
-	<h6>{{blog.content5|safe|linebreaks}}</h6>
+	<div class="contentt">
+	<h1>Job Detail</h1>
+	<h2>Latest {{job.companyname}} Reqruitment</h2>
+	<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Organization Name</th>
+      <th scope="col">{{job.companyname}}</th>
+    
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Job Category</th>
+      <td>{{job.jobcat}}</td>
+    
+    </tr>
+    <tr>
+      <th scope="row">Total no of Vaccencies</th>
+      <td>{{job.vac}}</td>
+   
+    </tr>
+    <tr>
+      <th scope="row">Job Location</th>
+      <td colspan="2">{{job.jobloc}}</td>
+     
+    </tr>
+     <tr>
+      <th scope="row">Name of the Post & No of vacancy</th>
+      <td colspan="2">{{job.postname}}</td>
+     
+    </tr>
+     <tr>
+      <th scope="row">Educational Qualification</th>
+      <td colspan="2">{{job.qualifiction}}</td>
+     
+    </tr>
+     <tr>
+      <th scope="row">Eligibility </th>
+      <td colspan="2">{{job.eligibility}}</td>
+     
+    </tr>
+     <tr>
+      <th scope="row">Age Limit </th>
+      <td colspan="2">{{job.agelimit}}</td>
+     
+    </tr>
+     <tr>
+      <th scope="row">Selection procudure</th>
+      <td colspan="2">{{job.applyproc}}</td>
+     
+    </tr>
 
-	<h2>{{blog.stitle6}}</h2>
-	<h6>{{blog.content6|safe|linebreaks}}</h6>
+    <tr>
+      <th scope="row">Important Dates </th>
+      <td colspan="2">{{job.impdate}}</td>
+     
+    </tr>
+    <tr>
+      <th scope="row">Salary</th>
+      <td colspan="2">{{job.salary}}</td>
+     
+    </tr>
+    {% if job.appfee %}
+    <tr>
+      <th scope="row">Application Fees </th>
+      <td colspan="2">{{job.appfee}}</td>
+     
+    </tr>
+    {% endif %}
+     <tr>
+      <th scope="row">Last Date </th>
+      <td colspan="2">{{job.lastdate}}</td>
+     
+    </tr>
+
+     <tr>
+      <th scope="row">Apply Link</th>
+      <td colspan="2"><a href={{job.link}} class="btn btn-primary">Apply Now</a></td>
+
+     
+    </tr>
+
+
+  </tbody>
+</table>
+
+<h4>{{job.jobdes}}</h4>
+
+<button class="btn btn-success"><a href="https://chat.whatsapp.com/C94CwgBn4p1AruWedQ5DMQ">Join Our Whatsapp Group</a>
+</button>
+	</div>
 </div>
-<hr>
+
+
 <div class="related_post">
-	<hr>
-	{% if rel %}
-	<h1>Related post</h1>
-	{% for r in rel %}
-	*  <a href="{% url 'tamil_short_stories' r.slug %}" class="relposttitle">{{r.title}}</a>
-		<br>
+	<h3>Related Jobs</h3>
+	{% for job in jobs %}
+   <h5><a href="{% url 'job_details' job.slug %}">{{job.companyname}}</a><br></h5>
 	{% endfor %}
-	{% endif %}
 </div>
-</div>
+
+<a href="{% url 'home' %}" class="btn btn-danger">Back To Home</a>
+
 
 
 

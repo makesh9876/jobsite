@@ -1,5 +1,5 @@
 from django import forms
-from .models import Message, UserBlog
+from .models import Message
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -21,7 +21,3 @@ class NewUserForm(UserCreationForm):
         if commit:
             user.save()
         return user
-class blogform(forms.ModelForm):
-    class Meta:
-        model=UserBlog
-        fields=("title","description","stitle","content","stitle1","content1","stitle2","content2","stitle3","content3")

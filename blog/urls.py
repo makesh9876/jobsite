@@ -8,7 +8,7 @@ from .views import *
 urlpatterns = [
     path('', views.index,name='index'),
     path('home',views.index, name='home'),
-    path('tamil_short_stories/<slug:slug>/',views.tamil_short_stories,name='tamil_short_stories'),
+    path('job_details/<slug:slug>',views.job_details,name='job_details'),
     path('search',views.search, name='search'),
     path('about',views.about, name='about'),
     path('contact',views.contact, name='contact'),
@@ -17,7 +17,6 @@ urlpatterns = [
     path('rr',views.rr,name='rr'),
     path('message',views.message,name='message'),
     path('logout', views.logout, name='logout'),
-    path('userpost',views.userpost,name='userpost'),
     path('privacy',views.privacy, name='privacy'),
     path('terms',views.terms, name='terms'),
 

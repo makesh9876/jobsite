@@ -4,7 +4,6 @@ from .models import *
 
 
 # Register your models here.
-admin.site.register(Blog)
-admin.site.register(UserBlog)
+
 admin.site.register(Message)
-admin.site.register(Test)
+admin.site.register(Job)

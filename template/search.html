@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+
+{% load static %}
+{% block content %}
+
+<h3>Searched Jobs</h3>
+<div class="table-responsive-lg">
+
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+    
+      <th scope="col">COMPANY NAME</th>
+      <th scope="col">POST</th>
+      <th scope="col">QUALIFICATION</th>
+   
+      <th scope="col">DETAILS</th>
+     
+    </tr>
+  </thead>
+{% for job in jobs %}
+  <tbody>
+  	
+    <tr class="bg-primary">
+      <th scope="row">{{job.companyname}}</th>
+      <td>{{job.vac}}</td>
+      <td>{{job.qualifiction}}</td>
+      <td><a href="{% url 'job_details' job.slug %}" class="btn btn-primary">Apply</a></td>
+    </tr>
+ 
+  </tbody>
+  {% endfor %}
+</table>
+</div>
+
+{% endblock content %}

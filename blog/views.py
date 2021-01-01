@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.models import User, auth
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
-from .forms import messageform, blogform
+from .forms import messageform
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .forms import NewUserForm
 from django.contrib.auth.decorators import login_required
@@ -16,22 +16,27 @@ from django.db.models import Q
 from.models import *
 
 # Create your views here.
-def tamil_short_stories(request,slug):
-	blog=Blog.objects.get(slug=slug)
-	related=Blog.objects.filter(slug__contains=slug)[1::]
-	return render(request,'detail.html',{'blog':blog,'rel':related})
+def job_details(request,slug):
+    job=Job.objects.all()
+    detail=Job.objects.get(slug=slug)
+    context={'job':detail,'jobs':job}
+    return render(request,'detail.html',context)
 
 
 def index(request):
-	blog=Blog.objects.all()
-	context={'blogs':blog}
-	return render(request,'home.html',context)
+    job=Job.objects.all()
+    tnjob=Job.objects.filter(jobcat__contains='Tamilnadu Govt')
+    injob=Job.objects.filter(jobcat__contains='Indian Govt')
+    inprivate=Job.objects.filter(jobcat__contains='Private Job')
+    context={'jobs':job,'tnjob':tnjob,'injob':injob,'inpri':inprivate}
+    return render(request,'home.html',context)
 
 def search(request):
-	if request.method =='GET':
-		query=request.GET.get('q')
-		result=Blog.objects.filter(title__contains=query)
-		return render(request, 'home.html',{'blogs':result})
+    if request.method =='GET':
+        query=request.GET.get('q')
+        result=Job.objects.filter(Q(jobcat__contains=query)|Q(postname__contains=query)|Q(jobloc__contains=query)|Q(qualifiction__contains=query))
+        context={'jobs':result}
+        return render(request, 'search.html',context)
 def about(request):
 	return render(request,'about.html')
 def contact(request):
@@ -105,16 +110,7 @@ def login(request):
 def rr(request):
 	return render(request,'register.html')
 
-def userpost(request):
-	form=blogform(request.POST or request.FILES)
-	if request.method=="POST":
-		if form.is_valid():
-			obj=form.save(commit=False)
-			obj.author=request.user
-			
-			obj.save()
-			return redirect('index')
-	return render(request,'userpost.html',{'form':form})
+
 def privacy(request):
     return render(request,'privacy.html')
 def terms(request):
